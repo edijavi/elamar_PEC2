@@ -65,7 +65,7 @@ findOne(users, { key: 'name', value: 'Fermin' }, { onSuccess, onError });
 /* Se llama a la función findOne() al cual se le pasan el array users, 
 el objeto con la propiedad 'name' y su valor 'Fermin' y un objeto con las funciones onSuccess y onError */
 
-//Expected result:
+//Expected result on screen:
 /*
 findOne success
 findOne error
