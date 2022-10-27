@@ -5,6 +5,10 @@ const findOne = (list, { key, value }, { onSuccess, onError }) => {
   Uno con una propiedad y valor de esta y otro con las funciones onSuccess, onError 
   */
   return new Promise((resolve, reject) => {
+  /*
+  La función que inicialmente que busacaba coincidencias dentro del array list ahora a parte de buscar nos devolvera 
+  un objeto Promise en el que  representa la finalización o fallo de la operación de busqueda y el valor que resulta de dicha operación
+  */  
     setTimeout(() => {
     /*
     Se llama a la funtion JavaScript setTimeout en la cual se le pasa una función en 
@@ -24,8 +28,8 @@ const findOne = (list, { key, value }, { onSuccess, onError }) => {
         reject({ msg: 'ERROR: Element Not Found' })
       }    
       /* 
-      Si se ecuantra un elemento dentro del array se llama a la función onSuccess y se le pasa el parámetro const element
-      Si no se encuentra un elemento en el array se llama a la función onError se le pasa un objeto como parámentro,
+      Si se ecuantra un elemento dentro del array se la promesa se finaliza devolviendo el parámetro element
+      Si no se encuentra un elemento en el array se la promesa indica un fallo y devuelve un objeto como parámentro,
       dicho objeto tiene la propiedad msg y valor de la misma es 'ERROR: Element Not Found'
       */
     }, 2000);
