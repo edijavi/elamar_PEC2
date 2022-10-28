@@ -4,9 +4,9 @@ const findOne = (list, { key, value }, { onSuccess, onError }) => {
   Los parametros list del tipo array, y 2 objetos.
   Uno con una propiedad y valor de esta y otro con las funciones onSuccess, onError 
   */
-  return new Promise((resolve, reject) => {
+  const result = new Promise((resolve, reject) => {
   /*
-  La función que inicialmente que busacaba coincidencias dentro del array list ahora a parte de buscar nos devolvera 
+  La función que inicialmente que busacaba coincidencias dentro del array list ahora a parte de buscar generará 
   un objeto Promise en el que  representa la finalización o fallo de la operación de busqueda y el valor que resulta de dicha operación
   */  
     setTimeout(() => {
@@ -33,8 +33,20 @@ const findOne = (list, { key, value }, { onSuccess, onError }) => {
       dicho objeto tiene la propiedad msg y valor de la misma es 'ERROR: Element Not Found'
       */
     }, 2000);
-    // tiempo en milisegunados que tiene que esperar para ejecutarse la función anterior*/
-  }).then((res)=>{onSuccess(res)}).catch((res)=>{onError(res)});
+    // tiempo en milisegunados que tiene que esperar para ejecutarse la función anterior
+  });
+
+  result.
+    then((res) => {
+      onSuccess(res);
+    }).
+    catch((res) => {
+      onError(res);
+    });
+  /* Una vez nuestra Promesa es resuelta o marcada cómo error concatenamos con el método then y catch 
+     para mostrar por pantalla el cuando es resuelta o existe un error
+  */
+
 }
 
 const onSuccess = ({ name }) => console.log(`user: ${name}`);
