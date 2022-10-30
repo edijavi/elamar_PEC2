@@ -1,23 +1,23 @@
 const findOne = (list, { key, value }, { onSuccess, onError }) => {
-  /* Se declara la función findOne en la cual se usa la notación 
+  /* Se define la función findOne en la cual se usa la notación 
    "function arrow", dicha función requiere de distintos parametros.
   Los parametros list del tipo array, y 2 objetos.
   Uno con una propiedad y valor de esta y otro con las funciones onSuccess, onError 
   */
   const result = new Promise((resolve, reject) => {
   /*
-  La función que inicialmente que busacaba coincidencias dentro del array list ahora a parte de buscar generará 
-  un objeto Promise en el que  representa la finalización o fallo de la operación de busqueda y el valor que resulta de dicha operación
+  Se define const result en la que de guarda un objeto Promise en el que  representa la 
+  finalización o fallo de la operación de busqueda y el valor que resulta de dicha operación
   */  
     setTimeout(() => {
     /*
-    Se llama a la funtion JavaScript setTimeout en la cual se le pasa una función en 
+    Se llama al Método JavaScript setTimeout en el cual se le pasa una función en 
     notación "funtion arrow" y el parametro referente al tiempo en milisegundos que se esperará
     para su ejecución
     */
       const element = list.find(element => element[key] === value);
       /* 
-      la función a ejecutar guarda en const element el resultado de la busqueda del array list 
+      Se define const element el cuál guarda resultado de la busqueda del array list 
       usando el método find() disponible en Javascrip en el cual devuelve el primer elemento que cumple
       la función de comprobación en notación "arrow funtion" en la que se comprueba
       si algun elemento del array cumple con el nombre de la propiedad recibida y su valor 
@@ -28,42 +28,42 @@ const findOne = (list, { key, value }, { onSuccess, onError }) => {
         reject({ msg: 'ERROR: Element Not Found' })
       }    
       /* 
-      Si se ecuantra un elemento dentro del array se la promesa se finaliza devolviendo el parámetro element
+      Sentencia If/Else. Si se ecuantra un elemento dentro del array, la promesa  finaliza devolviendo el parámetro element
       Si no se encuentra un elemento en el array se la promesa indica un fallo y devuelve un objeto como parámentro,
       dicho objeto tiene la propiedad msg y valor de la misma es 'ERROR: Element Not Found'
       */
     }, 2000);
-    // tiempo en milisegunados que tiene que esperar para ejecutarse la función anterior
+      //Tiempo en milisegunados que tiene que esperar para ejecutarse todo lo anterior
   });
 
   result.
-    then((res) => {
-      onSuccess(res);
+    then((obj) => {
+      onSuccess(obj);
     }).
-    catch((res) => {
-      onError(res);
+    catch((error) => {
+      onError(error);
     });
-  /* Una vez nuestra Promesa es resuelta o marcada cómo error concatenamos con el método then y catch 
-     para mostrar por pantalla el cuando es resuelta o existe un error
+  /* Una vez nuestra Promesa es resuelta o erronea podemos concatenar con el método then y catch 
+     en el que se llama a la función oNSuccess y onError respectivamente
   */
 
 }
 
 const onSuccess = ({ name }) => console.log(`user: ${name}`);
 /*
-Se declara la función onSuccess en notación "arrow function" la cual requiere la propiedad de un objeto
+Se define la función onSuccess en notación "arrow function" la cual requiere la propiedad de un objeto
 llamada name y ejecuta el método console.log() en el que se le pasa un parámetro del tipo string 
 el cual usa "template literals" para poder concatenar varias lineas valores del tipo string o uso de 
 string interpolation `${name}`
 */
 const onError = ({ msg }) => console.log(msg);
 /*
-Se declara la función OnError en notación "arrow function" la cual requiere el parámetro del tipo objeto
- con la propiedad msg la cual ejecuta el método console.log() y se le pasa el parámetro msg
+Se define la función OnError en notación "arrow function" la cual requiere el parámetro del tipo objeto
+con la propiedad msg la cual ejecuta el método console.log() y se le pasa el parámetro msg
 */
 
 const users = [
-  // Se declará el array users que guarda 2 elementos del tipo objeto con 2 propiedades y sus respectivos valores */
+  // Se define el array users que guarda 2 elementos del tipo objeto con 2 propiedades y sus respectivos valores */
   {
     name: 'Carlos',
     rol: 'Teacher'
