@@ -1,1 +1,1 @@
-const app = new ExpenceController(new ExpenceService(), new ExpenceView());
+const app = new ExpenseController(new ExpenseService(), new ExpenseView());

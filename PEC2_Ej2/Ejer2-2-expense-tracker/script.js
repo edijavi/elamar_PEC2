@@ -23,6 +23,7 @@ let transactions =
 // Add transaction
 function addTransaction(e) {
   e.preventDefault();
+  console.log(e);
 
   if (text.value.trim() === '' || amount.value.trim() === '') {
     alert('Please add a text and amount');
@@ -34,6 +35,7 @@ function addTransaction(e) {
     };
 
     transactions.push(transaction);
+    console.log(transactions);
 
     addTransactionDOM(transaction);
 
@@ -117,4 +119,11 @@ function init() {
 
 init();
 
-form.addEventListener('submit', addTransaction);
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  addTransaction(e)
+
+});
+
+
+
