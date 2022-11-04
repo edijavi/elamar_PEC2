@@ -16,13 +16,11 @@
 
     _commit(expenses) {
       this.onExpenseListChanged(expenses);
-      localStorage.setItem("expenses", JSON.stringify(expenses));
+      localStorage.setItem('expenses', JSON.stringify(this.expenses));
     }
   
     addExpense(text, amount) {
-      const expense = new Expense({ text, amount });
-      this.expenses.push(expense);
-      console.log(this.expenses);
+      this.expenses.push(new Expense({ text, amount }));
       this._commit(this.expenses);
     }
   }

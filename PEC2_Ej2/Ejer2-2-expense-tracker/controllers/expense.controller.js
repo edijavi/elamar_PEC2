@@ -24,14 +24,11 @@
     }
   
     onExpenseListChanged = expenses => {
-      expenses.forEach((expense) => {
-        this.view.addTransactionDOM(expense)
-      });
+      this.view.addTransactionDOM(expenses);
     };
   
-    handleAddExpense = (text, amount) => {
-      this.service.addExpense(text, amount);
-
+    handleAddExpense = (expenseText, expenseAmount) => {
+      this.service.addExpense(expenseText, expenseAmount);
     };
   
 
