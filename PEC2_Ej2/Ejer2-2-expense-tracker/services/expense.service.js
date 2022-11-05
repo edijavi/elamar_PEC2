@@ -23,5 +23,13 @@
       this.expenses.push(new Expense({ text, amount }));
       this._commit(this.expenses);
     }
+
+    deleteExpense(_id) {
+      debugger
+      this.expenses = this.expenses.filter(({ id }) => id !== _id);
+      this._commit(this.expenses);
+      console.log(this.expenses);
+    }
+
   }
   

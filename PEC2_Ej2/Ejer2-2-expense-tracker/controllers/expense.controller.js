@@ -16,7 +16,7 @@
       this.service.bindExpenseListChanged(this.onExpenseListChanged);
       this.view.addTransaction(this.handleAddExpense);
       // this.view.bindEditExpense(this.handleEditExpense);
-      // this.view.bindDeleteExpense(this.handleDeleteExpense);
+      this.view.bindDeleteExpense(this.handleDeleteExpense);
 
       // Display initial Expenses
       this.onExpenseListChanged(this.service.expenses);
@@ -25,11 +25,16 @@
   
     onExpenseListChanged = expenses => {
       this.view.addTransactionDOM(expenses);
+      this.view.updateValues(expenses)
     };
   
     handleAddExpense = (expenseText, expenseAmount) => {
       this.service.addExpense(expenseText, expenseAmount);
     };
-  
+
+    handleDeleteExpense = id => {
+      console.log(id);
+      this.service.deleteExpense(id);
+    };
 
   }
