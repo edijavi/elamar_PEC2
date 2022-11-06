@@ -24,12 +24,12 @@
       this._commit(this.expenses);
     }
 
-    editExpense(id, updatedAmount) {
+    editExpense(id, updatedText) {
       this.expenses = this.expenses.map(expense =>
         expense.id === id
           ? new Expense({
               ...expense,
-              amount: updatedAmount
+              text: updatedText
             })
           : expense
       );

@@ -14,7 +14,6 @@
         this.amount = this.getElement('#amount');
 
         this._temporaryExpenseText = "";
-        this._temporaryExpenseAmount = "";
         this._initLocalListeners();
     }
 
@@ -53,8 +52,6 @@
               } else {
               handler(this._expenseText, +this._expenseAmount);
               this._resetInputs();        
-              // this.updateValues();
-              // this.updateLocalStorage();
               }
       });
 
@@ -84,11 +81,11 @@
         spanText.textContent= transaction.text
 
         const spanAmount = this.createElement("span");
-        spanAmount.contentEditable = true;
+        spanAmount.contentEditable = false;
         spanAmount.classList.add("editable");
         spanAmount.textContent= sign + Math.abs(transaction.amount)
 
-        const deleteButton = this.createElement("button", "delete-btn");
+        const deleteButton = this.createElement("button", "delete-btn", );
         deleteButton.textContent = "x";
     
         item.append(spanText, spanAmount, deleteButton);
@@ -102,11 +99,9 @@
   }
 
   _initLocalListeners() {
-    this.list.addEventListener("span", event => {
+    this.list.addEventListener("input", event => {
       if (event.target.className === "editable") {
         this._temporaryExpenseText = event.target.innerText;
-        this._temporaryExpenseAmount = event.target.parseFloat(innerText);
-
       }
     });
   }
@@ -136,7 +131,7 @@
     this.list.addEventListener("click", event => {
       if (event.target.className === "delete-btn") {
         const id = event.target.parentElement.id;
-        console.log(id);
+
         handler(id);
       }
     });
@@ -144,14 +139,12 @@
 
   bindEditExpense(handler) {
     this.list.addEventListener("focusout", event => {
-      if (this._temporaryExpenseAmount) {
+      if (this._temporaryExpenseText) {
         const id = event.target.parentElement.id;
 
-        handler(id, this._temporaryExpenseAmount);
-        this._temporaryExpenseAmount = "";
+        handler(id, this._temporaryExpenseText);
       }
     });
   }
-
 }
   
