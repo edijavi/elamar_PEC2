@@ -31,12 +31,16 @@ function onlyVowels(array) {
     }
     return newStr;
   });
-  
+
   return arrayonlyVowels;
 }
 
 function doubleMatrix(array) {
-  // your code here
+  const arraydoubleMatrix = array.map(
+    (arr) => arr.map((item) => item*2)
+  );
+
+  return arraydoubleMatrix;
 }
 
 module.exports = {
