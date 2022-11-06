@@ -15,11 +15,27 @@ return arrayOnlyOneWord;
 }
 
 function positiveRowsOnly(array) {
-  // your code here
+  const arrayPositiveRowsOnly = array.filter((arr) => arr.filter((item) => item > -1).length === arr.length );
+
+return arrayPositiveRowsOnly;
+
 }
 
 function allSameVowels(array) {
-  // your code here
+  const regExpVowels = /^[aeiou]/i;
+  const arrayAllSameVowels = array.filter((str) => { 
+    
+    let newStr = "";
+    for (let index = 0; index < str.length; index++) {
+      const character = str[index]
+      if (regExpVowels.test(character)) {
+        newStr += character;
+      }
+    }
+    return newStr;
+  });
+
+  return arrayAllSameVowels;
 }
 
 module.exports = {
