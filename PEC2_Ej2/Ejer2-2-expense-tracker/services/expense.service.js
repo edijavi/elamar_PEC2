@@ -40,7 +40,8 @@
     deleteExpense(_id) {
       debugger
       this.expenses = this.expenses.filter((expense) => expense.id !== _id);
-      this._commit(this.expenses);
+        
+        this._commit(this.expenses);
       console.log(this.expenses);
     }
 
