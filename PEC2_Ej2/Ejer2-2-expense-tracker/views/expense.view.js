@@ -77,17 +77,21 @@
         item.id = transaction.id;
         // Add class based on value
         item.classList.add(transaction.amount < 0 ? 'minus' : 'plus');
-        item.textContent= transaction.text;
+        
+        const spanText = this.createElement("span");
+        spanText.contentEditable = true;
+        spanText.classList.add("editable");
+        spanText.textContent= transaction.text
 
-        const span = this.createElement("span");
-        span.contentEditable = true;
-        span.classList.add("editable");
-        span.textContent= sign + Math.abs(transaction.amount)
+        const spanAmount = this.createElement("span");
+        spanAmount.contentEditable = true;
+        spanAmount.classList.add("editable");
+        spanAmount.textContent= sign + Math.abs(transaction.amount)
 
         const deleteButton = this.createElement("button", "delete-btn");
         deleteButton.textContent = "x";
     
-        item.append(span, deleteButton);
+        item.append(spanText, spanAmount, deleteButton);
 
         this.list.append(item);
       })
@@ -98,11 +102,11 @@
   }
 
   _initLocalListeners() {
-    this.list.addEventListener("input", event => {
-      if (event.target.id === "text") {
+    this.list.addEventListener("span", event => {
+      if (event.target.className === "editable") {
         this._temporaryExpenseText = event.target.innerText;
-      }else if (event.target.id === "amount") {
-        this._temporaryExpenseAmount = event.target.innerText;
+        this._temporaryExpenseAmount = event.target.parseFloat(innerText);
+
       }
     });
   }
@@ -137,17 +141,17 @@
       }
     });
   }
-  
 
-    // updateLocalStorage() {
-    //     localStorage.setItem('transactions', JSON.stringify(transactions));
-    //   }
-  
-  // Init app
-  // init() {
-  //     list.innerHTML = '';
-  //     this.transactions.forEach(this.addTransactionDOM);
-  //     this.updateValues();
-  // }
+  bindEditExpense(handler) {
+    this.list.addEventListener("focusout", event => {
+      if (this._temporaryExpenseAmount) {
+        const id = event.target.parentElement.id;
+
+        handler(id, this._temporaryExpenseAmount);
+        this._temporaryExpenseAmount = "";
+      }
+    });
+  }
+
 }
   

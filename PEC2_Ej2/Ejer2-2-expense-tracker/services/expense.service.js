@@ -24,9 +24,22 @@
       this._commit(this.expenses);
     }
 
+    editExpense(id, updatedAmount) {
+      this.expenses = this.expenses.map(expense =>
+        expense.id === id
+          ? new Expense({
+              ...expense,
+              amount: updatedAmount
+            })
+          : expense
+      );
+  
+      this._commit(this.expenses);
+    }
+
     deleteExpense(_id) {
       debugger
-      this.expenses = this.expenses.filter(({ id }) => id !== _id);
+      this.expenses = this.expenses.filter((expense) => expense.id !== _id);
       this._commit(this.expenses);
       console.log(this.expenses);
     }
