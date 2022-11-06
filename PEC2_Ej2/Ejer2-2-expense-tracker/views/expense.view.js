@@ -77,12 +77,12 @@
         
         const spanText = this.createElement("span");
         spanText.contentEditable = true;
-        spanText.classList.add("editable");
+        spanText.setAttribute("id","expenseText");
         spanText.textContent= transaction.text
 
         const spanAmount = this.createElement("span");
         spanAmount.contentEditable = false;
-        spanAmount.classList.add("editable");
+        spanAmount.setAttribute("id","expenseAmount");
         spanAmount.textContent= sign + Math.abs(transaction.amount)
 
         const deleteButton = this.createElement("button", "delete-btn", );
@@ -100,7 +100,7 @@
 
   _initLocalListeners() {
     this.list.addEventListener("input", event => {
-      if (event.target.className === "editable") {
+      if (event.target.id === "expenseText") {
         this._temporaryExpenseText = event.target.innerText;
       }
     });
