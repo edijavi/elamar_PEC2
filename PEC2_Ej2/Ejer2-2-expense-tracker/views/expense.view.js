@@ -14,6 +14,7 @@
         this.amount = this.getElement('#amount');
 
         this._temporaryExpenseText = "";
+        this._temporaryExpenseAmount = "";
         this._initLocalListeners();
     }
 
@@ -81,7 +82,7 @@
         spanText.textContent= transaction.text
 
         const spanAmount = this.createElement("span");
-        spanAmount.contentEditable = false;
+        spanAmount.contentEditable = true;
         spanAmount.setAttribute("id","expenseAmount");
         spanAmount.textContent= sign + Math.abs(transaction.amount)
 
@@ -102,6 +103,8 @@
     this.list.addEventListener("input", event => {
       if (event.target.id === "expenseText") {
         this._temporaryExpenseText = event.target.innerText;
+      }else {
+        this._temporaryExpenseAmount = parseInt(event.target.innerText, 10);
       }
     });
   }
@@ -139,10 +142,10 @@
 
   bindEditExpense(handler) {
     this.list.addEventListener("focusout", event => {
-      if (this._temporaryExpenseText) {
+      if (this._temporaryExpenseText || this._temporaryExpenseAmount ) {
         const id = event.target.parentElement.id;
 
-        handler(id, this._temporaryExpenseText);
+        handler(id, this._temporaryExpenseText, this._temporaryExpenseAmount);
       }
     });
   }

@@ -32,8 +32,8 @@
       this.service.addExpense(expenseText, expenseAmount);
     };
 
-    handleEditExpense = (id, expenseText) => {
-      this.service.editExpense(id, expenseText);
+    handleEditExpense = (id, expenseText, expenseAmount) => {
+      this.service.editExpense(id, expenseText, expenseAmount);
     };
 
     handleDeleteExpense = id => {
