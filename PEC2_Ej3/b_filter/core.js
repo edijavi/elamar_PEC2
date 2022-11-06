@@ -7,7 +7,11 @@ return arrayOnlyEven;
 }
 
 function onlyOneWord(array) {
-  // your code here
+  const arrayOnlyOneWord = array.filter(
+    (item) => !item.match(/ /g)
+  );
+
+return arrayOnlyOneWord;
 }
 
 function positiveRowsOnly(array) {
