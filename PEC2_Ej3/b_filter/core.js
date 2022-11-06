@@ -1,5 +1,9 @@
 function onlyEven(array) {
-  // your code here
+  const arrayOnlyEven = array.filter(
+    (item) => item%2==0
+  );
+
+return arrayOnlyEven;
 }
 
 function onlyOneWord(array) {
