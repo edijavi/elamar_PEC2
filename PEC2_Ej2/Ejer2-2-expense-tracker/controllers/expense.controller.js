@@ -37,7 +37,6 @@
     };
 
     handleDeleteExpense = id => {
-      console.log(id);
       this.service.deleteExpense(id);
     };
 
